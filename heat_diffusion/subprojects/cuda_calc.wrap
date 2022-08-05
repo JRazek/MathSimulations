@@ -1,0 +1,7 @@
+[wrap-git]
+url = https://github.com/JRazek/CUDACalc.git
+revision = master
+depth = 1
+
+[provide]
+dependency_names = cuda_calc_dep
