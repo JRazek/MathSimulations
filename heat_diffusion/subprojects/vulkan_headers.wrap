@@ -1,0 +1,7 @@
+[wrap-git]
+url = https://github.com/KhronosGroup/Vulkan-Headers.git
+revision = v1.3.223
+depth = 1
+
+[provide]
+dependency_names = vulkan_headers
