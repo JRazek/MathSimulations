@@ -1,0 +1,9 @@
+[wrap-git]
+url = https://github.com/KhronosGroup/Vulkan-Hpp.git
+revision = master
+depth = 1
+clone-recursive = true
+
+[provide]
+dependency_names = vulkan_hpp_wrap
+

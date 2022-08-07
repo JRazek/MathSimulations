@@ -1,0 +1,9 @@
+[wrap-git]
+url = https://github.com/janekb04/glfwpp.git
+revision = main
+depth = 1
+clone-recursive = true
+
+[provide]
+dependency_names = glfwpp_dep
+
