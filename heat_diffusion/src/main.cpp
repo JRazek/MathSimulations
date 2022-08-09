@@ -1,14 +1,11 @@
 
-#include <iostream>
+#include "graphics_interface.hpp"
 #include <glfwpp/glfwpp.h>
+#include <iostream>
 #include <vulkan/vulkan.hpp>
 
-
-
-auto main() -> int{
-	auto glfw_instance = glfw::init();
-	glfw::Window window{ 640, 480, "Hello GLFWPP"};
-
-	while (!window.shouldClose())
-        glfw::pollEvents();
+auto main() -> int {
+  using namespace jr::graphics;
+  Pipeline pipe(100, 100, "dupa");
+  
 }
