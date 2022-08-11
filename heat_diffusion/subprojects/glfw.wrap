@@ -1,0 +1,8 @@
+[wrap-git]
+url = https://github.com/glfw/glfw.git
+revision = 3.3-stable
+depth = 1
+clone-recursive = true
+
+[provide]
+dependency_names = glfw_dep

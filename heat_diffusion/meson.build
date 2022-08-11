@@ -6,9 +6,12 @@ project(
 
 cmake = import('cmake')
 
+#cuda_calc_proj = subproject('cuda_calc')
+#cuda_calc_dep = dependency('cuda_calc_dep',  fallback : ['cuda_calc', 'cuda_calc_dep'])
 
-cuda_calc_proj = subproject('cuda_calc')
-cuda_calc_dep = dependency('cuda_calc_dep',  fallback : ['cuda_calc', 'cuda_calc_dep'])
+
+#glfw_proj = cmake.subproject('glfw')
+#glfw_dep = glfw_proj.dependency('glfw',  fallback : ['glfw', 'glfw_dep'])
 
 
 glfw_dep = dependency('glfw3')
@@ -22,6 +25,16 @@ vulkan_dep = dependency('vulkan')
 vulkan_headers_proj = cmake.subproject('vulkan_headers')
 vulkan_headers_dep = vulkan_headers_proj.dependency('Vulkan-Headers')
 
+range_v3_proj_options = cmake.subproject_options()
+range_v3_proj_options.add_cmake_defines({
+  'RANGE_V3_DOCS': false,
+  'RANGE_V3_TESTS': false,
+  'RANGE_V3_EXAMPLES': false,
+  'RANGE_V3_PERF': false,
+})
+range_v3_proj = cmake.subproject('range-v3', options: range_v3_proj_options)
+range_v3_dep = range_v3_proj.dependency('range-v3')
+
 
 incdir = include_directories(
     'include',
@@ -30,7 +43,7 @@ incdir = include_directories(
 
 cpp_build_args=[
   '-stdlib=libc++', 
-  '-xcuda',
+#  '-xcuda',
 ]
 cpp_link_args=[
   '-stdlib=libc++',
@@ -40,14 +53,16 @@ cpp_link_args=[
 exec=executable(
     'heat_diffusion',
     'src/main.cpp',
+    'src/graphics_interface.cpp',
     include_directories : incdir,
     cpp_args: cpp_build_args,
 	link_args: cpp_link_args,
     dependencies: [
-      cuda_calc_dep, 
+#      cuda_calc_dep, 
       glfw_dep,
       glfwpp_dep,
       vulkan_dep,
       vulkan_headers_dep,
+      range_v3_dep,
     ]
 )

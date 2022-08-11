@@ -1,4 +1,6 @@
 cuda_calc
 vulkan_hpp
+glfw
 glfwpp
+range-v3
 vulkan_headers
